@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+{% for book in books %}
+    <ul>
+        <li><b>Nomi: </b>{{ book.title }}</li>
+        <li>
+            <b>Narxi: </b>{{ book.price }}
+
+            {% if book.price >= 10 %}
+            <span style="color: red;">
+            qimmat
+            </span>
+            {% else %}
+            <span style="color: green;">
+            arzon
+            </span>
+            {% endif %}
+
+        </li>
+        <li><b>Author: </b>{{ book.author }}</li>
+    </ul>
+    <hr>
+{% endfor %}
+
+</body>
+</html>

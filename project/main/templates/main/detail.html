@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<p><b>Nomi: </b>{{ book.title }}</p>
+<p>
+    <b>Price: </b>{{ book.price }}
+    {% if book.price >= 10%}
+        qimmat
+    {% else %}
+        arzon
+    {% endif %}
+</p>
+<p><b>Author: </b>{{ book.author }}</p>
+
+</body>
+</html>
