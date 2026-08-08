@@ -15,7 +15,12 @@
         arzon
     {% endif %}
 </p>
-<p><b>Author: </b>{{ book.author }}</p>
+
+{% if book.introduction %}
+<p><b>Muqadimma: </b>{{ book.introduction }}</p>
+{% endif %}
+
+<a href="{% url 'home' %}">Ortga</a>
 
 </body>
 </html>

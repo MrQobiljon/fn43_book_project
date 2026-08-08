@@ -6,9 +6,13 @@
 </head>
 <body>
 
+{% for category in categories %}
+<a href="">{{ category.name }}</a>&nbsp;&nbsp;&nbsp;
+{% endfor %}
+
 {% for book in books %}
     <ul>
-        <li><b>Nomi: </b>{{ book.title }}</li>
+        <li><b>Nomi: </b><a href="{% url 'detail' book.id %}">{{ book.title }}</a></li>
         <li>
             <b>Narxi: </b>{{ book.price }}
 
@@ -23,7 +27,7 @@
             {% endif %}
 
         </li>
-        <li><b>Author: </b>{{ book.author }}</li>
+        <li><b>Category: </b>{{ book.category.name }}</li>
     </ul>
     <hr>
 {% endfor %}
