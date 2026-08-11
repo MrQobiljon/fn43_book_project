@@ -1,0 +1,358 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f6f8;
+    color: #222;
+}
+
+/* =========================
+   NAVBAR
+========================= */
+
+.navbar {
+    background-color: #ffffff;
+    padding: 20px 40px;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    flex-wrap: wrap;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.navbar a {
+    text-decoration: none;
+    color: #333;
+    padding: 10px 16px;
+    border-radius: 8px;
+    transition: 0.3s;
+}
+
+.navbar a:hover {
+    background-color: #2563eb;
+    color: white;
+}
+
+/* =========================
+   SEARCH
+========================= */
+
+.search-box {
+    max-width: 800px;
+    margin: 30px auto 20px;
+    padding: 0 20px;
+}
+
+.search-box input {
+    width: 100%;
+    padding: 15px 20px;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    font-size: 16px;
+    outline: none;
+    transition: 0.3s;
+}
+
+.search-box input:focus {
+    border-color: #2563eb;
+    box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+}
+
+/* =========================
+   BOOKS CONTAINER
+========================= */
+
+.books-container {
+    max-width: 1100px;
+    margin: 30px auto;
+    padding: 0 20px;
+
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 20px;
+}
+
+/* =========================
+   BOOK CARD
+========================= */
+
+.book-card {
+    background-color: white;
+    border-radius: 14px;
+    padding: 25px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+
+    transition: 0.3s;
+
+    border: 1px solid #eee;
+}
+
+.book-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.12);
+}
+
+/* =========================
+   BOOK TITLE
+========================= */
+
+.book-title {
+    font-size: 21px;
+    margin-bottom: 15px;
+}
+
+.book-title a {
+    color: #2563eb;
+    text-decoration: none;
+}
+
+.book-title a:hover {
+    text-decoration: underline;
+}
+
+/* =========================
+   BOOK INFO
+========================= */
+
+.book-info {
+    list-style: none;
+}
+
+.book-info li {
+    margin: 10px 0;
+    font-size: 16px;
+}
+
+.book-info b {
+    color: #444;
+}
+
+/* =========================
+   PRICE
+========================= */
+
+.price {
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.expensive {
+    color: #dc2626;
+}
+
+.cheap {
+    color: #16a34a;
+}
+
+/* =========================
+   CATEGORY
+========================= */
+
+.category {
+    display: inline-block;
+    background-color: #eff6ff;
+    color: #2563eb;
+    padding: 6px 10px;
+    border-radius: 20px;
+    font-size: 14px;
+}
+
+/* =========================
+   CATEGORY NAV
+========================= */
+
+.category-menu {
+    max-width: 1100px;
+    margin: 20px auto;
+    padding: 0 20px;
+
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.category-menu a {
+    background-color: white;
+    border: 1px solid #ddd;
+    padding: 9px 15px;
+    border-radius: 8px;
+    text-decoration: none;
+    color: #333;
+
+    transition: 0.3s;
+}
+
+.category-menu a:hover,
+.category-menu a.active {
+    background-color: #2563eb;
+    color: white;
+    border-color: #2563eb;
+}
+
+/* =========================
+   NO RESULTS
+========================= */
+
+.no-results {
+    text-align: center;
+    padding: 50px;
+    color: #777;
+    font-size: 18px;
+}
+
+/* =========================
+   RESPONSIVE
+========================= */
+
+@media (max-width: 600px) {
+
+    .navbar {
+        padding: 15px;
+    }
+
+    .navbar a {
+        padding: 8px 10px;
+        font-size: 14px;
+    }
+
+    .books-container {
+        grid-template-columns: 1fr;
+    }
+
+    .book-card {
+        padding: 20px;
+    }
+}
+
+
+
+/* =========================
+   BOOK DETAIL
+========================= */
+
+.detail-container {
+    max-width: 900px;
+    margin: 50px auto;
+    padding: 20px;
+}
+
+.book-detail {
+    background-color: white;
+    padding: 40px;
+    border-radius: 16px;
+    box-shadow: 0 5px 25px rgba(0, 0, 0, 0.1);
+}
+
+
+/* BOOK TITLE */
+
+.book-detail h1 {
+    font-size: 32px;
+    margin-bottom: 25px;
+    color: #222;
+}
+
+
+/* PRICE */
+
+.detail-price {
+    font-size: 20px;
+    margin-bottom: 30px;
+}
+
+.detail-price .expensive,
+.detail-price .cheap {
+    margin-left: 8px;
+    font-size: 16px;
+}
+
+
+/* INTRODUCTION */
+
+.introduction {
+    margin-top: 30px;
+    padding: 20px;
+    background-color: #f8fafc;
+    border-left: 4px solid #2563eb;
+    border-radius: 8px;
+}
+
+.introduction h2 {
+    margin-bottom: 15px;
+    font-size: 22px;
+}
+
+.introduction p {
+    line-height: 1.7;
+    color: #555;
+}
+
+
+/* BOOK IMAGE */
+
+.book-image {
+    margin-top: 30px;
+    text-align: center;
+}
+
+.book-image img {
+    max-width: 400px;
+    width: 100%;
+    max-height: 500px;
+    object-fit: contain;
+    border-radius: 12px;
+}
+
+
+/* BACK BUTTON */
+
+.back-button {
+    display: inline-block;
+    margin-top: 30px;
+
+    padding: 12px 20px;
+
+    background-color: #2563eb;
+    color: white;
+
+    text-decoration: none;
+
+    border-radius: 8px;
+
+    transition: 0.3s;
+}
+
+.back-button:hover {
+    background-color: #1d4ed8;
+    transform: translateX(-3px);
+}
+
+
+/* MOBILE */
+
+@media (max-width: 600px) {
+
+    .detail-container {
+        margin: 20px auto;
+        padding: 15px;
+    }
+
+    .book-detail {
+        padding: 25px;
+    }
+
+    .book-detail h1 {
+        font-size: 25px;
+    }
+
+    .book-image img {
+        max-width: 100%;
+    }
+}

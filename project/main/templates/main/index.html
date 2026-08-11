@@ -1,36 +1,146 @@
+{% load static %}
+
 <!DOCTYPE html>
-<html lang="en">
+<html lang="uz">
+
 <head>
+
     <meta charset="UTF-8">
-    <title>Title</title>
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Kitoblar</title>
+
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+
 </head>
+
 <body>
 
-{% for category in categories %}
-<a href="">{{ category.name }}</a>&nbsp;&nbsp;&nbsp;
-{% endfor %}
 
-{% for book in books %}
-    <ul>
-        <li><b>Nomi: </b><a href="{% url 'detail' book.id %}">{{ book.title }}</a></li>
-        <li>
-            <b>Narxi: </b>{{ book.price }}
+<!-- =========================
+     NAVBAR
+========================= -->
 
-            {% if book.price >= 10 %}
-            <span style="color: red;">
-            qimmat
-            </span>
-            {% else %}
-            <span style="color: green;">
-            arzon
-            </span>
-            {% endif %}
+<nav class="navbar">
 
-        </li>
-        <li><b>Category: </b>{{ book.category.name }}</li>
-    </ul>
-    <hr>
-{% endfor %}
+    <a href="#"
+       class="category-link active"
+       data-category="all">
+        Barcha kitoblar
+    </a>
+
+
+    {% for category in categories %}
+
+    <a href="#"
+       class="category-link"
+       data-category="{{ category.name }}">
+        {{ category.name }}
+    </a>
+
+    {% endfor %}
+
+</nav>
+
+
+<!-- =========================
+     SEARCH
+========================= -->
+
+<div class="search-box">
+
+    <input
+            type="text"
+            id="searchInput"
+            placeholder="Kitob qidirish..."
+    >
+
+</div>
+
+
+<!-- =========================
+     BOOKS
+========================= -->
+
+<div class="books-container">
+
+    {% for book in books %}
+
+    <div
+            class="book-card"
+            data-category="{{ book.category.name }}"
+    >
+
+        <ul class="book-info">
+
+            <!-- BOOK NAME -->
+
+            <li class="book-title">
+
+                <b>Nomi:</b>
+
+                <a href="{% url 'detail' book.id %}">
+                    {{ book.title }}
+                </a>
+
+            </li>
+
+
+            <!-- PRICE -->
+
+            <li>
+
+                <b>Narxi:</b>
+
+                <span class="price">
+
+                        {{ book.price }}
+
+                    </span>
+
+
+                {% if book.price >= 10 %}
+
+                <span class="expensive">
+                            qimmat
+                        </span>
+
+                {% else %}
+
+                <span class="cheap">
+                            arzon
+                        </span>
+
+                {% endif %}
+
+            </li>
+
+
+            <!-- CATEGORY -->
+
+            <li>
+
+                <b>Category:</b>
+
+                <span class="category">
+                        {{ book.category.name }}
+                    </span>
+
+            </li>
+
+        </ul>
+
+    </div>
+
+    {% endfor %}
+
+</div>
+
+
+<script src="{% static 'js/script.js' %}"></script>
 
 </body>
+
 </html>

@@ -1,26 +1,112 @@
+{% load static %}
+
 <!DOCTYPE html>
-<html lang="en">
+<html lang="uz">
+
 <head>
+
     <meta charset="UTF-8">
-    <title>Title</title>
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>{{ book.title }}</title>
+
+    <link rel="stylesheet"
+          href="{% static 'css/style.css' %}">
+
 </head>
+
 <body>
 
-<p><b>Nomi: </b>{{ book.title }}</p>
-<p>
-    <b>Price: </b>{{ book.price }}
-    {% if book.price >= 10%}
-        qimmat
-    {% else %}
-        arzon
-    {% endif %}
-</p>
+<div class="detail-container">
 
-{% if book.introduction %}
-<p><b>Muqadimma: </b>{{ book.introduction }}</p>
-{% endif %}
+    <div class="book-detail">
 
-<a href="{% url 'home' %}">Ortga</a>
+        <!-- Kitob nomi -->
+
+        <h1>
+            {{ book.title }}
+        </h1>
+
+
+        <!-- Narxi -->
+
+        <p class="detail-price">
+
+            <b>Narxi:</b>
+
+            {{ book.price }}
+
+            {% if book.price >= 10 %}
+
+                <span class="expensive">
+                    qimmat
+                </span>
+
+            {% else %}
+
+                <span class="cheap">
+                    arzon
+                </span>
+
+            {% endif %}
+
+        </p>
+
+
+        <!-- Muqaddima -->
+
+        {% if book.introduction %}
+
+            <div class="introduction">
+
+                <h2>Muqaddima</h2>
+
+                <p>
+                    {{ book.introduction }}
+                </p>
+
+            </div>
+
+        {% endif %}
+
+
+        <!-- Rasm -->
+
+        <div class="book-image">
+
+            {% if book.image %}
+
+                <img src="{{ book.image.url }}"
+                     alt="{{ book.title }}">
+
+            {% else %}
+
+                <img
+                    src="https://demofree.sirv.com/nope-not-here.jpg"
+                    alt="Rasm mavjud emas">
+
+            {% endif %}
+
+        </div>
+
+
+        <!-- Orqaga -->
+
+        <a href="{% url 'home' %}"
+           class="back-button">
+
+            ← Ortga
+
+        </a>
+
+    </div>
+
+</div>
+
+
+<script src="{% static 'js/script.js' %}"></script>
 
 </body>
 </html>
