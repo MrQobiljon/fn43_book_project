@@ -91,14 +91,16 @@
 
         </div>
 
+        {% if request.user.is_authenticated %}
         <div class="book-image">
             <form method="post" action="{% url 'save_comment' book.pk %}">
                 {% csrf_token %}
                 <textarea name="text" style="font-size: 22pt; padding: 15px; border-radius: 15px;" rows="4"
-                          cols="40"></textarea>
+                          cols="40" maxlength="1000"></textarea>
                 <button type="submit" style="font-size: 22pt; padding: 15px; border-radius: 15px;">Send</button>
             </form>
         </div>
+        {% endif %}
 
 
         <!-- Orqaga -->
@@ -120,6 +122,15 @@
                 <b>Author: </b><a href="#">{{ comment.user.username }}</a>.
                 <span style="font-size: 8pt;"><b>{{ comment.created }}</b></span>
             </p>
+
+            {% if request.user.is_authenticated and request.user == comment.user %}
+            <a href="{% url 'update_comment' comment.id %}">Update</a>
+            {% endif %}
+
+            {% if request.user.is_authenticated and request.user == comment.user or request.user.is_superuser %}
+            <a href="{% url 'delete_comment' comment.id %}">Delete</a>
+            {% endif %}
+
         </div>
         {% endfor %}
 
